@@ -29,21 +29,28 @@ public class Tabuada {
 		this.maximoMultiplicador = maximoMultiplicador;
 	}
 	
-	public void calcularTabuada() {
-		//verificar se os valores estão invertidos
+	public String[] calcularTabuada() {
 		if (minimoMultiplicador > maximoMultiplicador) {
 			double temp = minimoMultiplicador;
 			minimoMultiplicador = maximoMultiplicador;
 			maximoMultiplicador = temp;
 		}
+		
+		//criar vetor de string que armazenará cada linha da tabuada
+		int tamanho = (int) (maximoMultiplicador - minimoMultiplicador + 1);
+		String resultado[] = new String[tamanho];
+		
 		//calcular e mostrar a tabuada
+		int contador = 0;
 		while (minimoMultiplicador <= maximoMultiplicador) {
 			double produto = multiplicando * minimoMultiplicador;
-			System.out.printf("%s X %s = %s", multiplicando, minimoMultiplicador, produto);
-			System.out.println();
+			String linha = multiplicando + " X " + minimoMultiplicador + " = " + produto;
+			resultado[contador] = linha;
+			System.out.println(linha);
 			minimoMultiplicador++;
 		}
 		System.out.println("FIM");
+		return resultado;
 	}
 
 }
